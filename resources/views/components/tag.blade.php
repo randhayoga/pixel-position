@@ -1,0 +1,1 @@
+<a href="" {{ $attributes->merge(['class' => 'bg-white/25 hover:bg-white/50 py-1 px-2 rounded']) }}>{{ $slot }}</a>
