@@ -15,16 +15,11 @@ test('job belongs to an employer', function () {
 
 test('job can have tags', function() {
     # Arrange
-    $jobs = Job::factory()->count(2)->create();
     $tags = Tag::factory()->count(4)->create();
-
-    # Act
-    foreach ($jobs as $job) {
-        foreach ($tags as $tag) {
-            $job->tag($tag);
-        }
-    }
+    $jobs = Job::factory(20)->hasAttached($tags)->create();
 
     # Assert
-    expect($job->tags)->toHaveCount(4);
+    foreach ($jobs as $job) {
+        expect($job->tags)->toHaveCount(4);
+    }
 });
