@@ -11,7 +11,7 @@
     </div>
     <div class="space-x-0.5 mt-auto ml-auto">
         @foreach ($job->tags as $tag)
-            <x-tag>{{ $tag->name }}</x-tag> 
+            <x-tag class="text-xs" :href="'/tags/'.$tag->name">{{ $tag->name }}</x-tag> 
         @endforeach
     </div>
 </x-hoverable-card>

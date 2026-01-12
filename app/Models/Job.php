@@ -12,6 +12,20 @@ class Job extends Model
     /** @use HasFactory<\Database\Factories\JobFactory> */
     use HasFactory;
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var list<string>
+     */
+    protected $fillable = [
+        'title',
+        'salary',
+        'location',
+        'schedule',
+        'url',
+        'featured',
+    ];
+
     public function employer(): BelongsTo
     {
         return $this->belongsTo(Employer::class);

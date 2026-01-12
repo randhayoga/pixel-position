@@ -1,13 +1,10 @@
 <x-layout>
     <div class="mt-5 space-y-10">
-        <section class="text-center space-y-4 pt-20">
-            <div class="inline-flex space-x-1">
-                <span class="bg-white w-2 h-2 inline-block"></span>
-                <h1 class="text-4xl font-bold">Let's find your next job.</h1>
-            </div>
-            <form action="">
-                <input type="text" placeholder="Web Developer..." class="rounded-lg bg-white/8 p-2.5 border-1 border-white/20 w-full max-w-xl">
-            </form>
+        <section class="space-y-4">
+            <x-page-heading>Let's find your next job.</x-page-heading>
+            <x-forms.form action="/search">
+                <x-forms.input :label="false" name="q" placeholder="Search for jobs..."/>
+            </x-forms.form>
         </section>
 
         <section class="pt-20">
@@ -25,7 +22,7 @@
             <x-section-title>Tags</x-section-title>
             <div class="mt-3 flex flex-wrap gap-3">
                 @foreach ($tags as $tag)
-                   <x-tag>{{ $tag->name }}</x-tag>
+                   <x-tag class="text-lg" :href="'/tags/'.$tag->name">{{ $tag->name }}</x-tag>
                 @endforeach
             </div>
         </section>
