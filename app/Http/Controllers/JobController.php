@@ -48,13 +48,11 @@ class JobController extends Controller
         $validated['featured'] = $request->has('featured');
         $validated['salary'] = '$' . number_format($validated['salary']);
 
-        // Store job data to jobs
         $job = Auth::user()->employer->jobs()->create(Arr::except($validated, 'tags'));
 
-        // Store tag datas (each one) to tags
         if ($validated['tags']) {
             foreach(explode(',', $validated['tags']) as $tag) {
-                $job->tags($tag);
+                $job->tags()->create(['name' => $tag]);
             }
         }
 
